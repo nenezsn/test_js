@@ -1,0 +1,13 @@
+<!-- 重写push方法 -->
+<script>
+    let arr = [1,2,3]
+    Object.defineProperty(arr,'push',{
+        value:(function(){
+            return function(...arg){
+                console.log(...arg)
+                Array.prototype.push.apply(arr,arg)
+            }
+        })()
+    })
+    arr.push(4)
+</script>

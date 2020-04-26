@@ -1,0 +1,23 @@
+<script>
+
+    var obj = {
+        name: 'wangbing'
+    };
+    var newObj = new Proxy(obj, {
+        get: function (target, key) {
+            console.log(`${key} 被读取`);
+            return target[key];
+        },
+        set: function (target, key, value) {
+            console.log(`${key} 被设置为 ${value}`);
+            target[key] = value;
+        }
+    });
+
+    // newObj.name; // 控制台输出：name 被读取
+    // newObj.name = 'others'; // 控制台输出：name 被设置为 others
+
+
+    console.log(obj.name); // 控制台输出: others
+
+</script>

@@ -1,0 +1,45 @@
+<script>
+    let person = {
+        type:'人'
+    }
+    let animal = {
+        type:'动物'
+    }
+    function Son(name,age){
+        this.name = name
+        this.age = age
+    }
+    Son.prototype = person
+    let obj = new Son ('王冰',26)
+    obj.__proto__ = {
+        haha:1
+    }
+    Object.defineProperty(obj,'name',{
+        value:3,
+        writable:true,
+        enumerable:true,
+        configurable:true
+    })
+    console.log('obj',obj)
+    console.log('222',Object.keys(obj) )
+    // 获取属性描述
+    console.log('getOwnPropertyDescriptor',Object.getOwnPropertyDescriptor(obj,'name'));
+    // 获取对象的原型
+    console.log('getPrototypeOf',Object.getPrototypeOf(obj))
+    // 设置对象的原型
+    Object.setPrototypeOf(obj,animal)
+    console.log('getPrototypeOf after set',Object.getPrototypeOf(obj))
+    // 判断属性是自身还是原型链上的
+    console.log('hasOwnProperty',obj.hasOwnProperty('age'))
+    // 判断当前对象是否是某个对象的原型链上的 
+    console.log('isPrototypeOf',animal.isPrototypeOf(obj))
+    // 冻结对象的数据  可枚举和可配置都设置程了false
+    Object.freeze(obj)
+    // 判断当前对象是否支持扩展
+    console.log('isExtensible',Object.isExtensible(obj));
+    console.log('getOwnPropertyDescriptor',Object.getOwnPropertyDescriptor(obj,'name'));
+    obj.constructor = Son
+    Son.prototype = animal
+    console.log(obj instanceof Son)
+    console.log(obj.type);
+</script>
