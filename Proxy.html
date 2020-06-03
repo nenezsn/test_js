@@ -11,13 +11,22 @@
         set: function (target, key, value) {
             console.log(`${key} 被设置为 ${value}`);
             target[key] = value;
-        }
+        },
+        has:function (a,b){
+            console.log(a,b)
+        },
+        deleteProperty:function (a,b){
+            console.log(a,b)
+        },
+        isExtensible:function (a,b){
+            console.log(a,b)
+            return false
+        },
     });
-
+    Object.freeze(newObj)
     // newObj.name; // 控制台输出：name 被读取
     // newObj.name = 'others'; // 控制台输出：name 被设置为 others
-
-
-    console.log(obj.name); // 控制台输出: others
-
+    // delete newObj.name
+    // console.log('2222',Object.isExtensible(newObj))
+    newObj.age= 23
 </script>

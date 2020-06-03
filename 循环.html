@@ -1,0 +1,40 @@
+<script>
+    // for in  会把数组当成对象，key为索引 值为value  并且会遍历出原型上的属性 
+    // 遍历数组推荐使用es6的 for of
+    Array.prototype.method=function(){
+        console.log(this.length)
+    }
+    let arr = [1,2,3,4,5,6]
+    for(let i of arr){
+        if(i == 3){
+            continue
+        }
+        console.log('i',i)
+    }
+</script>
+<script>
+    // for in也会遍历原型上的方法，可以用过hasOwnProperty来进行筛选 或者直接使用Object.keys()
+    let obj = {
+        name:'wangbing',
+        age:23,
+        sex:'male'
+    }
+    for (let i in obj){
+        console.log(i)
+    }
+</script>
+<script>
+    // foreach 和 map的区别就是 foreach不能链式调用，没有返回值
+    let arr2 = ['a','b','c']
+    let bbb = arr2.forEach((item,index)=>{
+        console.log('item',item,index)
+        return item
+    })
+</script>
+
+<script>
+    let arr3 = [{age:1},{age:2},{age:3}]
+    let obj2 = arr3.filter(item=>item.age == 2)
+    obj2[0].age = 6
+    console.log('222',arr3)
+</script>

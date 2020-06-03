@@ -2,9 +2,11 @@
     let person = {
         type:'人'
     }
-    let animal = {
-        type:'动物'
+    function Animai (){
+        this.type = '动物'
     }
+    const animal = new Animai()
+
     function Son(name,age){
         this.name = name
         this.age = age
@@ -38,8 +40,8 @@
     // 判断当前对象是否支持扩展
     console.log('isExtensible',Object.isExtensible(obj));
     console.log('getOwnPropertyDescriptor',Object.getOwnPropertyDescriptor(obj,'name'));
-    obj.constructor = Son
-    Son.prototype = animal
-    console.log(obj instanceof Son)
+    // obj.constructor = Son
+    // Son.prototype = animal
+    console.log(obj instanceof Animai)
     console.log(obj.type);
 </script>

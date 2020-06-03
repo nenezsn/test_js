@@ -1,0 +1,40 @@
+<script>
+   let arr = [1,2,3,4]
+   let count = 0
+
+//    while(arr.length!=0){
+//        count+=arr.shift()
+//    }
+
+// count = arr.reduce((prev,item,index)=>{
+//        return prev+item
+//    },0)
+
+// function digui(arr){
+//     if(arr.length == 0){
+//         return 0 
+//     }
+//     count += arr.shift()
+//     digui(arr)
+// }
+// digui(arr)
+let arr2= [5,3,2,7,4,1]
+
+function sort(arr){
+    for(let i = 0 ;i<arr.length;i++){
+        for(let j = 1+i;j<arr.length;j++){
+            console.log(`${i}:${j}===`,arr[i],arr[j])
+            if(arr[i]>arr[j]){
+                let temp = arr[i]
+                arr[i]=arr[j]
+                arr[j]=temp
+            }
+        }
+    }
+    return arr
+}
+console.log(sort(arr2))
+
+
+
+</script>

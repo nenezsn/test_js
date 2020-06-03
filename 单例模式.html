@@ -1,20 +1,16 @@
 <script>
     //单例模式
-    let person = (function () {
-        var instance = null
-        return function (name) {
-            this.name = name;
-            console.log('instance', instance) // 第一次 ：instance null 第二次 {name: "王冰"}
-            if (instance) {
-                return instance
-            } else {
-                return instance = this;
-            }
+    function Signle(name){
+        if(Signle.instance){
+            return Signle.instance
         }
-    })()
-    let obj = new person('王冰')
-    console.log('obj', obj) //obj {name: "王冰"}
-    let obj1 = new person('哈哈')
-    console.log('obj', obj1) //obj {name: "王冰"}
+        this.name = name 
+        Signle.instance = this
+        return this
+    }
+    let obj =  new Signle('张三')
+    let obj2 =  new Signle('李四')
+    console.log(obj,obj2);
+    // 构造函数一般来说是没有返回值的，如果有返回值 1.非引用数据类型 则忽略 2.引用数据类型，直接返回此对象
     // tip:关于Javascript中构造函数返回值的问题 [link](https://blog.csdn.net/a1247529789/article/details/51645951)
 </script>

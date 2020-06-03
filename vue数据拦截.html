@@ -1,31 +1,36 @@
 <script>
-            function observer(data) {
-            if (typeof data != 'object') {
-                return data
+    function observer(data) {
+        if (typeof data != 'object') {
+            return data
+        }
+        Object.keys(data).forEach(item => {
+            defineReactive(data, item, data[item])
+        })
+    }
+    function defineReactive(obj, key, value) {
+        observer(value)
+        Object.defineProperty(obj, key, {
+            get: function () {
+                console.log('获取' + key)
+                return value
+            },
+            set: function (newval) {
+                console.log('设置' + key)
+                value = newval
+                return value
             }
-            Object.keys(data).forEach(item => {
-                defineReactive(data, item, data[item])
-            })
+        })
+    }
+    const obj = {
+        name: '王冰',
+        age: 23,
+        sex:{
+            value:'男'
         }
-        function defineReactive(obj, key, value) {
-            observer(obj)
-            Object.defineProperty(obj, key, {
-                get: function () {
-                    console.log('获取' + key)
-                    return value
-                },
-                set: function (newval) {
-                    console.log('设置' + key)
-                    value = newval
-                    return value
-                }
-            })
-        }
-        const obj = {
-            name: '王冰',
-            age: 23
-        }
-        observer(obj)
-        obj.name
-        obj.name = '王长'
+    }
+    observer(obj)
+    obj.name
+    obj.name = '王长'
+    obj.sex.value = '女'
+    obj.sex.value
 </script>
