@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {}
+        const name = Symbol('name')
+        const name2 = Symbol('name')
+        obj[name] = '王冰'
+        console.log('obj',obj)
+
+
+        let yellow = Symbol("Yellow");
+        let yellow1 = Symbol.for("Yellow");
+        console.log('222',yellow === yellow1)
+    </script>
+</body>
+</html>
