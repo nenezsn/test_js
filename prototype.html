@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let father = {
+            name: 'wangbing'
+        }
+
+        const child = Object.create(father)
+
+        child.age = 26
+        console.log('属性描述符', Object.getOwnPropertyDescriptor(child, 'age'))
+
+        Object.defineProperty(child, 'age', {
+            writable: false,
+            enumerable: false,
+            configurable: true
+        })
+        Object.defineProperty(child, 'haha', {
+            value: 'heihei',
+            writable: true,
+        })
+        console.log('属性描述符', Object.getOwnPropertyDescriptor(child, 'haha'))
+
+        child.age = 25
+        function define(obj, key, value) {
+            Object.defineProperty(obj, key, {
+                get() {
+                    return value
+                },
+                set(newVal) {
+                    console.log('设置了张三')
+                    value = newVal
+                },
+            })
+        }
+        define(child, 'name', '王冰')
+
+        console.log('child', child.name)
+        child.name = '张三'
+        console.log('child', child.name)
+        console.log('Object.keys(child)', Object.keys(child))
+
+        for (let key in child) {
+            console.log('key', key)
+        }
+        let arr = [1, 2, 3]
+        // 不能处理对象，因为不是可迭代类型
+        for (let value of arr) {
+            console.log('value', value)
+        }
+        for (let key in arr) {
+            console.log('key', key)
+        }
+
+    </script>
+</body>
+
+</html>

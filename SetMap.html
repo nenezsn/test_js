@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let set = new Set()
+        set.add(1)
+        set.add(2)
+        console.log(set)
+        console.log(typeof set)
+        console.log(Object.prototype.toString.call(set))
+        console.log(set instanceof Set)
+        console.log(set)
+        for(let i of set){
+            console.log('i',i)
+        }
+        let arr = [1,2,3,3,4,2]
+        let set2 = new Set(arr)
+        console.log([...new Set([1,2,3,4,4])])
+        let map = new Map([
+            [1,'a'],
+            [2,'b'],
+            [2,'c']
+        ])
+        console.log(map)
+        console.log(typeof map)
+        console.log(Object.prototype.toString.call(map))
+        console.log(map instanceof Map)
+        console.log(map.get(1))
+        console.log(map)
+        for(let [key,value] of map){
+            console.log('i',key,value)
+        }
+        // console.log(map.set(3,'c'))
+    </script>
+</body>
+</html>
