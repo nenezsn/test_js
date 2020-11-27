@@ -13,4 +13,26 @@
     console.log(obj,obj2);
     // 构造函数一般来说是没有返回值的，如果有返回值 1.非引用数据类型 则忽略 2.引用数据类型，直接返回此对象
     // tip:关于Javascript中构造函数返回值的问题 [link](https://blog.csdn.net/a1247529789/article/details/51645951)
+    // 单例模式2
+   // 单体模式
+    var Singleton = function(name){
+        this.name = name;
+    };
+    Singleton.prototype.getName = function(){
+        return this.name;
+    }
+    // 获取实例对象
+    var getInstance = (function() {
+        var instance;
+        return function(name) {
+            if(!instance) {//相当于一个一次性阀门,只能实例化一次
+                instance = new Singleton(name);
+            }
+            return instance;
+        }
+    })();
+    // 测试单体模式的实例,所以a===b
+    var a = getInstance("aa");
+    var b = getInstance("bb");  
+    console.log(a==b)
 </script>
