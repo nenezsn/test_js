@@ -1,7 +1,8 @@
 <script>
 
     var obj = {
-        name: 'wangbing'
+        name: 'wangbing',
+        list:{sex:1}
     };
     var newObj = new Proxy(obj, {
         get: function (target, key) {
